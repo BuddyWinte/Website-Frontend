@@ -1,0 +1,145 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+@font-face {
+    font-family: "Clash Display";
+    src: url("/src/assets/fonts/ClashDisplay-Variable.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 200 700;
+    font-display: swap;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: "Clash Display", "Inter", sans-serif;
+}
+
+code, pre, kbd, samp, tt, .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+:root {
+    --midnight: hsl(220, 40%, 98%);
+    --moonstone: hsl(220, 35%, 100%);
+    --skyline: hsl(220, 35%, 95%);
+    --surface-elevated: hsl(220, 30%, 92%);
+    --surface-hover: hsl(220, 30%, 90%);
+
+    --cerulean: hsl(218, 65%, 58%);
+    --cerulean-light: hsl(218, 70%, 72%);
+    --cerulean-dark: hsl(218, 60%, 46%);
+    --cerulean-soft: hsl(218, 80%, 96%);
+
+    --lavender: hsl(250, 60%, 70%);
+    --lavender-soft: hsl(250, 80%, 96%);
+
+    --mint: hsl(160, 45%, 50%);
+    --mint-soft: hsl(160, 70%, 95%);
+
+    --rose: hsl(350, 65%, 65%);
+    --rose-soft: hsl(350, 80%, 96%);
+
+    --amber: hsl(38, 70%, 62%);
+    --amber-soft: hsl(38, 90%, 95%);
+
+    --text-plain: hsl(220, 25%, 18%);
+    --text-muted: hsl(220, 18%, 38%);
+    --text-faded: hsl(220, 15%, 55%);
+    --text-inverse: hsl(220, 30%, 98%);
+
+    --border-steel: hsl(220, 25%, 85%);
+    --border-fade: hsl(220, 25%, 90%);
+    --border-strong: hsl(220, 20%, 75%);
+
+    --overlay-light: hsl(220, 40%, 10% / 0.04);
+    --overlay-strong: hsl(220, 40%, 10% / 0.08);
+
+    --shadow-xs: 0 1px 2px hsl(220 30% 30% / 0.05);
+    --shadow-sm: 0 4px 10px hsl(220 30% 30% / 0.06);
+    --shadow-md: 0 8px 24px hsl(220 30% 30% / 0.08);
+
+    --focus-ring: 0 0 0 3px hsl(218 80% 70% / 0.35);
+
+    --success: var(--mint);
+    --success-hover: hsl(160, 45%, 44%);
+    --success-bg: var(--mint-soft);
+
+    --error: var(--rose);
+    --error-hover: hsl(350, 65%, 55%);
+    --error-bg: var(--rose-soft);
+
+    --warning: var(--amber);
+    --warning-hover: hsl(38, 70%, 52%);
+    --warning-bg: var(--amber-soft);
+
+    --info: var(--cerulean);
+    --info-hover: var(--cerulean-dark);
+    --info-bg: var(--cerulean-soft);
+
+    --link: hsl(218, 70%, 55%);
+    --link-hover: hsl(218, 70%, 45%);
+
+    --selection-bg: hsl(218, 80%, 85%);
+    --selection-text: hsl(220, 30%, 15%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root,
+  body.dark {
+
+    --midnight: hsl(220, 30%, 10%);
+    --moonstone: hsl(220, 25%, 14%);
+    --skyline: hsl(220, 25%, 18%);
+    --surface-elevated: hsl(220, 22%, 22%);
+    --surface-hover: hsl(220, 22%, 26%);
+
+    --cerulean: hsl(218, 85%, 68%);
+    --cerulean-light: hsl(218, 90%, 78%);
+    --cerulean-dark: hsl(218, 75%, 58%);
+    --cerulean-soft: hsl(218, 70%, 20%);
+
+    --lavender: hsl(250, 80%, 78%);
+    --lavender-soft: hsl(250, 70%, 22%);
+
+    --mint: hsl(160, 60%, 60%);
+    --mint-soft: hsl(160, 50%, 22%);
+
+    --rose: hsl(350, 85%, 72%);
+    --rose-soft: hsl(350, 70%, 22%);
+
+    --amber: hsl(38, 90%, 70%);
+    --amber-soft: hsl(38, 80%, 22%);
+
+    --text-plain: hsl(220, 30%, 92%);
+    --text-muted: hsl(220, 20%, 70%);
+    --text-faded: hsl(220, 15%, 55%);
+    --text-inverse: hsl(220, 25%, 12%);
+
+    --border-steel: hsl(220, 20%, 30%);
+    --border-fade: hsl(220, 18%, 22%);
+    --border-strong: hsl(220, 20%, 40%);
+
+    --overlay-light: hsl(220 40% 5% / 0.5);
+    --overlay-strong: hsl(220 40% 5% / 0.7);
+
+    --shadow-xs: 0 1px 2px hsl(220 40% 5% / 0.3);
+    --shadow-sm: 0 4px 12px hsl(220 40% 5% / 0.4);
+    --shadow-md: 0 12px 28px hsl(220 40% 5% / 0.5);
+
+    --focus-ring: 0 0 0 3px hsl(218 90% 70% / 0.45);
+
+    --success-hover: hsl(160, 60%, 52%);
+    --error-hover: hsl(350, 85%, 62%);
+    --warning-hover: hsl(38, 90%, 60%);
+    --info-hover: var(--cerulean-dark);
+
+    --link: hsl(218, 90%, 72%);
+    --link-hover: hsl(218, 90%, 62%);
+
+    --selection-bg: hsl(218, 70%, 35%);
+    --selection-text: hsl(220, 30%, 95%);
+  }
+}
