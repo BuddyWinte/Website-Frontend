@@ -75,14 +75,6 @@ const posts: BlogPost[] = [
     date: "2026-02-14",
     path: "/blog/hello-world",
     visible: true
-  },
-  {
-    slug: "hello-world-2",
-    title: "Hello World! 2",
-    description: "Test blog cause yk 2",
-    date: "2026-02-14",
-    path: "/blog/hello-world",
-    visible: true
   }
 ]
 

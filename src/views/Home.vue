@@ -9,7 +9,7 @@
     </span>
   </h1>
   <p class="text-lg sm:text-xl text-[var(--text-muted)] max-w-xl mb-16 text-center">
-    Lorem Impsum
+    test test test
   </p>
   <!--<section class="w-full max-w-6xl mx-auto mt-12 relative overflow-hidden">
     <div class="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[var(--midnight)] to-transparent z-20 pointer-events-none"></div>
@@ -35,35 +35,6 @@
   </section>-->
 </template>
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-
-interface Partner {
-  name: string
-  icon: string
-  route: string
-}
-
-const partners = ref<Partner[]>([
-  {
-    name: 'Ujina',
-    icon: '/src/assets/partners/ujina.png',
-    route: '',
-  },
-  {
-    name: 'BloxVault',
-    icon: '/src/assets/partners/BloxVault.png',
-    route: '',
-  },
-])
-const extendedPartners = computed(() => {
-  if (!partners.value.length) return []
-  const repeats = Math.ceil(10 / partners.value.length)
-  const result: Partner[] = []
-  for (let i = 0; i < repeats; i++) {
-    partners.value.forEach(p => result.push(p))
-  }
-  return result
-})
 </script>
 <style scoped>
 .wave-emoji {
@@ -77,14 +48,5 @@ const extendedPartners = computed(() => {
   50% { transform: rotate(10deg); }
   75% { transform: rotate(0deg); }
   100% { transform: rotate(-10deg); }
-}
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
-.animate-marquee {
-  display: flex;
-  gap: 2rem;
-  animation: marquee 20s linear infinite;
 }
 </style>
