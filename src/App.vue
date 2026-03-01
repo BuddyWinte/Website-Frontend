@@ -1,236 +1,437 @@
 <template>
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[var(--moonstone)]/90 backdrop-blur-xl border-b border-[var(--border-fade)] shadow-[var(--shadow-xs)]">
-    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="/src/assets/wintepfp.png" alt="Profile Picture" class="w-10 h-10 rounded-full border-2 border-[var(--cerulean)] object-cover"/>
-        <h1 class="text-xl font-bold tracking-tight text-[var(--text-plain)]">BuddyWinte</h1>
-      </div>
-      <button class="sm:hidden p-2 rounded-md text-[var(--text-plain)] hover:bg-[var(--surface-hover)] transition" @click="mobileOpen = !mobileOpen" aria-label="Toggle menu">
-        <MenuIcon class="w-6 h-6"/>
-      </button>
-      <nav class="hidden sm:flex gap-6 items-center relative">
-        <template v-for="item in currentNavItems" :key="item.name">
-          <div v-if="!item.children">
-            <router-link
-              :to="item.path"
-              class="flex items-center gap-1 px-3 py-2 rounded-md transition"
-              :class="isActive(item.path) 
-                ? 'bg-[var(--cerulean-soft)] text-[var(--cerulean-dark)]' 
-                : 'text-[var(--text-plain)] hover:bg-[var(--surface-hover)] hover:text-[var(--cerulean)]'"
-            >
-              <component v-if="item.icon" :is="item.icon" class="w-5 h-5"/>
-              {{ item.name }}
-            </router-link>
-          </div>
-          <div v-else class="relative">
-            <button 
-              @click="toggleDropdown(item.name)" 
-              class="flex items-center gap-1 px-3 py-2 rounded-md transition focus:outline-none"
-              :class="isActive(item.path) 
-                ? 'bg-[var(--cerulean-soft)] text-[var(--cerulean-dark)]' 
-                : 'text-[var(--text-plain)] hover:bg-[var(--surface-hover)] hover:text-[var(--cerulean)]'"
-            >
-              <component v-if="item.icon" :is="item.icon" class="w-5 h-5"/>
-              {{ item.name }}
-              <ChevronDownIcon class="w-4 h-4 transition-transform" :class="{'rotate-180': isDropdownOpen(item.name)}"/>
-            </button>
-            <transition name="fade-slide">
-              <div 
-                v-show="isDropdownOpen(item.name)" 
-                class="absolute left-0 mt-2 w-52 bg-[var(--surface-elevated)] border border-[var(--border-steel)] rounded-xl shadow-[var(--shadow-md)] overflow-hidden z-50 backdrop-blur-md"
-              >
-                <router-link
-                  v-for="child in item.children"
-                  :key="child.path"
-                  :to="child.path"
-                  class="block px-4 py-3 text-sm transition rounded-md"
-                  :class="isActive(child.path) 
-                    ? 'bg-[var(--cerulean-soft)] text-[var(--cerulean-dark)]' 
-                    : 'text-[var(--text-plain)] hover:bg-[var(--surface-hover)] hover:text-[var(--cerulean)]'"
-                >
-                  {{ child.name }}
-                </router-link>
-              </div>
-            </transition>
-          </div>
-        </template>
-      </nav>
-    </div>
-    <transition name="fade-slide">
-      <div v-show="mobileOpen" class="fixed inset-0 z-40 bg-[var(--midnight)]/95 flex flex-col items-center justify-center gap-6 sm:hidden p-4">
-        <template v-for="item in currentNavItems" :key="item.name">
-          <div v-if="!item.children">
-            <router-link
-              :to="item.path"
-              class="text-2xl font-semibold transition"
-              :class="isActive(item.path)
-              ? 'bg-[var(--cerulean-soft)] text-[var(--cerulean-dark)]'
-              : 'text-[var(--text-plain)] hover:bg-[var(--surface-hover)] hover:text-[var(--cerulean)]'"
-            >
-              {{ item.name }}
-            </router-link>
-          </div>
-          <div v-else class="flex flex-col items-center gap-3">
-            <span class="text-xl font-semibold text-[var(--text-plain)]">{{ item.name }}</span>
-            <router-link
-              v-for="child in item.children"
-              :key="child.path"
-              :to="child.path"
-              class="text-lg transition"
-              :class="isActive(child.path) ? 'text-[var(--cerulean)]' : 'text-[var(--text-plain)] hover:text-[var(--cerulean)]'"
-            >
-              {{ child.name }}
-            </router-link>
-          </div>
-        </template>
-      </div>
-    </transition>
-  </header>
+  <main class="site-shell">
+    <aside class="window sidebar-window">
+      <header class="title-bar">
+        <span>BuddyWinte</span>
+      </header>
 
-  <transition name="fade-slide">
-    <div
-      v-if="alert.visible"
-      class="fixed top-16 left-0 right-0 z-40 flex justify-center"
-    >
-      <div
-        :class="[
-          'w-full max-w-5xl px-6 py-3 rounded-b-md shadow-md flex justify-between items-center font-medium',
-          alertClass(alert.type)
-        ]"
-      >
-        <span>{{ alert.text }}</span>
-        <button
-          v-if="alert.dismissable"
-          @click="alert.visible = false"
-          class="ml-4 text-[var(--text-plain)] hover:opacity-80 transition cursor-pointer"
-        >
-          <XIcon class="w-5 h-5"/>
-        </button>
+      <div class="window-body">
+        <section class="profile-block">
+          <img class="avatar" :src="ProfilePng" alt="BuddyWinte avatar" />
+          <p>BuddyWinte</p>
+        </section>
+
+        <nav class="sidebar-nav">
+          <RouterLink class="geo-btn nav-link" to="/">
+            <img class="pixel-icon" :src="HomeIcon" alt="" />
+            Home
+          </RouterLink>
+
+          <RouterLink class="geo-btn nav-link" to="/guestbook" @mouseover="GuestbookHovered = true" @mouseleave="GuestbookHovered = false">
+            <img class="pixel-icon" :src="GuestbookHovered ? GuestbookIconOpen : GuestbookIcon" alt="" />
+            Guestbook
+          </RouterLink>
+        </nav>
+
+        <div class="construction-wrap">
+          <img class="pixel-icon" :src="ConstructionGif" alt="Under construction" /> Under Construction
+        </div>
       </div>
-    </div>
-  </transition>
-  <main class="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-4 pt-20 sm:pt-32 bg-[var(--midnight)]">
-    <router-view />
+
+      <!--<footer class="status-bar">
+        text
+      </footer>-->
+    </aside>
+
+    <section class="window main-window">
+      <header class="title-bar hot">
+        <span>Page Title</span>
+        <!--<span>_ [] X</span>-->
+      </header>
+
+      <div class="window-body">
+        <!--<p class="marquee-strip">
+          <span>
+            Welcome to Winte's portal !! guestbook soon !! web rings soon !! midi probably later !!
+          </span>
+        </p>-->
+        <RouterView />
+      </div>
+
+      <footer class="status-bar">
+        Last updated: February 28, 2026
+      </footer>
+    </section>
+
+    <aside class="window ads-window">
+      <header class="title-bar">
+        <span>Neko Ads</span>
+      </header>
+
+      <div class="window-body">
+        <p v-if="currentAd && !isAdsBlocked" class="ads-meta">Sponsored by {{ currentAd.name }}</p>
+
+        <a
+          v-if="currentAd && !isAdsBlocked"
+          class="ads-link"
+          :href="currentAd.websiteUrl"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            class="ads-image pixel-icon"
+            :src="currentAd.adUrl"
+            :alt="`Advertisement for ${currentAd.name}`"
+            @error="onAdImageError"
+          />
+        </a>
+
+        <p v-else class="marquee-strip">
+          <span>{{ adsBlockedMessage }}</span>
+        </p>
+      </div>
+    </aside>
   </main>
 </template>
 
-<script setup lang="ts">
-import type { Component } from 'vue'
-import { ref, reactive, computed, onMounted, onBeforeUnmount, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { HomeIcon, UserIcon, FolderIcon, ChevronDownIcon, MenuIcon, XIcon, Rss } from 'lucide-vue-next'
+<script lang="ts" setup>
+import { onMounted, onUnmounted, ref } from 'vue'
+import ConstructionGif from './assets/icons/bonus/animated/icons/construction.gif'
+import HomeIcon from './assets/icons/icons/home.png'
+import GuestbookIcon from './assets/icons/icons/address-book.png'
+import GuestbookIconOpen from './assets/icons/icons/address-book-open.png'
+import ProfilePng from './assets/wintepfp.png'
+import { LanyardData, type LanyardPayload } from './lanyard'
 
-type NavChild = { name: string; path: string }
-type NavItem = { name: string; path: string; icon?: Component; children?: NavChild[] }
-type AppRouteMeta = { title?: string; description?: string; navItems?: NavItem[] }
+const GuestbookHovered = ref(false)
 
-const mobileOpen = ref(false)
-const dropdownsOpen = reactive<Record<string, boolean>>({})
-
-const route = useRoute()
-
-const defaultNavItems: NavItem[] = [
-  { name: 'Home', path: '/', icon: HomeIcon },
-  { name: 'Webmaster', path: '/about', icon: UserIcon },
-  { name: 'Blog', path: '/blog', icon: Rss },
-  { 
-    name: 'Projects', path: '/projects', icon: FolderIcon,
-    children: [
-      { name: 'Project One', path: '/projects/project-one' },
-      { name: 'Project Two', path: '/projects/project-two' },
-      { name: 'All Projects', path: '/projects' },
-    ]
-  }
-]
-
-const currentNavItems = computed<NavItem[]>(() => {
-  const routeMeta = route.meta as AppRouteMeta
-  return routeMeta.navItems && routeMeta.navItems.length > 0 ? routeMeta.navItems : defaultNavItems
-})
-
-const alert = reactive({ visible: false, type: 'info', text: '', dismissable: true })
-
-function alertClass(type: string) {
-  switch(type){
-    case 'success': return 'bg-[var(--success-bg)] text-[var(--success)] border border-[var(--success)]'
-    case 'error': return 'bg-[var(--error-bg)] text-[var(--error)] border border-[var(--error)]'
-    case 'warning': return 'bg-[var(--warning-bg)] text-[var(--warning)] border border-[var(--warning)]'
-    default: return 'bg-[var(--info-bg)] text-[var(--info)] border border-[var(--info)]'
-  }
+type LanyardGatewayMessage = {
+  op: number
+  t?: string
+  d?: unknown
 }
 
-function isActive(path: string) {
-  return route.path === path
+type LanyardHelloData = {
+  heartbeat_interval: number
 }
 
-function toggleDropdown(name: string) {
-  Object.keys(dropdownsOpen).forEach(k => { if(k !== name) dropdownsOpen[k] = false })
-  dropdownsOpen[name] = !dropdownsOpen[name]
+type LanyardDiscordUser = {
+  id?: string
 }
 
-function isDropdownOpen(name: string) {
-  return !!dropdownsOpen[name]
+type LanyardPresenceData = {
+  discord_user?: LanyardDiscordUser
+} & LanyardPayload
+
+type NekoAd = {
+  name: string
+  websiteUrl: string
+  adUrl: string
 }
 
-function onClickOutsideDropdown(e: MouseEvent) {
-  const target = e.target as HTMLElement
-  if (!document.querySelector('header')?.contains(target)) {
-    Object.keys(dropdownsOpen).forEach(k => dropdownsOpen[k] = false)
+const LANYARD_SOCKET_URL = 'wss://api.lanyard.rest/socket'
+const LANYARD_USER_ID = '1357429661834936510'
+const ADS_FEED_URL = 'https://cdn.buddywinte.xyz/ads/ads.json'
+const ADS_ROTATION_MS = 10_000
+
+let socket: WebSocket | null = null
+let heartbeatIntervalId: number | null = null
+let reconnectTimeoutId: number | null = null
+let reconnectAttempts = 0
+let isUnmounted = false
+let adsRotationIntervalId: number | null = null
+
+const nekoAds = ref<NekoAd[]>([])
+const currentAd = ref<NekoAd | null>(null)
+const isAdsBlocked = ref(false)
+const adsBlockedMessage = ref('Your adblocker is blocking ads content.')
+const failedAdUrls = new Set<string>()
+
+function clearHeartbeat() {
+  if (heartbeatIntervalId !== null) {
+    window.clearInterval(heartbeatIntervalId)
+    heartbeatIntervalId = null
   }
 }
 
-function onKeyDown(e: KeyboardEvent) {
-  if (e.key === 'Escape') { Object.keys(dropdownsOpen).forEach(k => dropdownsOpen[k] = false) }
+function clearReconnectTimeout() {
+  if (reconnectTimeoutId !== null) {
+    window.clearTimeout(reconnectTimeoutId)
+    reconnectTimeoutId = null
+  }
 }
 
-function syncHeadFromRoute() {
-  const routeMeta = route.meta as AppRouteMeta
-  const pageTitle = routeMeta.title
-  const pageDescription = routeMeta.description ?? "Welcome to Winte's Portal."
-  const fullTitle = pageTitle ? `${pageTitle} - Winte's Portal` : "Winte's Portal"
+function sendHeartbeat() {
+  if (socket?.readyState === WebSocket.OPEN) {
+    socket.send(JSON.stringify({ op: 3 }))
+  }
+}
 
-  document.title = fullTitle
+function clearAdsRotation() {
+  if (adsRotationIntervalId !== null) {
+    window.clearInterval(adsRotationIntervalId)
+    adsRotationIntervalId = null
+  }
+}
 
-  const setMeta = (attr: 'name' | 'property', key: string, content: string) => {
-    let metaTag = document.querySelector(`meta[${attr}="${key}"]`) as HTMLMetaElement | null
-    if (!metaTag) {
-      metaTag = document.createElement('meta')
-      metaTag.setAttribute(attr, key)
-      document.head.appendChild(metaTag)
+function chooseRandomAd() {
+  if (!nekoAds.value.length) {
+    currentAd.value = null
+    return
+  }
+
+  const availableAds = nekoAds.value.filter((ad) => !failedAdUrls.has(ad.adUrl))
+  if (!availableAds.length) {
+    isAdsBlocked.value = true
+    currentAd.value = null
+    adsBlockedMessage.value = 'Your adblocker is blocking ad media.'
+    clearAdsRotation()
+    return
+  }
+
+  const currentUrl = currentAd.value?.adUrl
+  const candidatePool = availableAds.length > 1
+    ? availableAds.filter((ad) => ad.adUrl !== currentUrl)
+    : availableAds
+  const randomIndex = Math.floor(Math.random() * candidatePool.length)
+  currentAd.value = candidatePool[randomIndex] ?? null
+}
+
+function onAdImageError() {
+  if (!currentAd.value) {
+    return
+  }
+
+  failedAdUrls.add(currentAd.value.adUrl)
+  chooseRandomAd()
+}
+
+function isNekoAd(value: unknown): value is NekoAd {
+  if (!value || typeof value !== 'object') {
+    return false
+  }
+
+  const candidate = value as Record<string, unknown>
+  return (
+    typeof candidate.name === 'string' &&
+    typeof candidate.websiteUrl === 'string' &&
+    typeof candidate.adUrl === 'string'
+  )
+}
+
+async function initNekoAds() {
+  clearAdsRotation()
+  failedAdUrls.clear()
+
+  try {
+    const response = await fetch(ADS_FEED_URL, {
+      cache: 'no-store'
+    })
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`)
     }
-    metaTag.setAttribute('content', content)
-  }
 
-  setMeta('name', 'description', pageDescription)
-  setMeta('property', 'og:title', fullTitle)
-  setMeta('property', 'og:description', pageDescription)
-  setMeta('name', 'twitter:title', fullTitle)
-  setMeta('name', 'twitter:description', pageDescription)
+    const payload = await response.json()
+    if (!Array.isArray(payload)) {
+      throw new Error('Invalid ads payload')
+    }
+
+    const parsedAds = payload.filter(isNekoAd)
+    if (!parsedAds.length) {
+      throw new Error('No valid ads found')
+    }
+
+    nekoAds.value = parsedAds
+    isAdsBlocked.value = false
+    adsBlockedMessage.value = ''
+    chooseRandomAd()
+    adsRotationIntervalId = window.setInterval(chooseRandomAd, ADS_ROTATION_MS)
+  } catch {
+    currentAd.value = null
+    nekoAds.value = []
+    isAdsBlocked.value = true
+    adsBlockedMessage.value = 'Your adblocker is blocking ads. Please disable it for this site.'
+  }
 }
 
-watch(
-  () => route.fullPath,
-  () => {
-    mobileOpen.value = false
-    Object.keys(dropdownsOpen).forEach(k => dropdownsOpen[k] = false)
-    syncHeadFromRoute()
-  },
-  { immediate: true },
-)
+function publishUpdate(eventName?: string) {
+  if (eventName) {
+    LanyardData.lastEvent = eventName
+  }
+  LanyardData.updatedAt = new Date().toISOString()
+  window.dispatchEvent(new CustomEvent('lanyard:update', { detail: LanyardData }))
+}
+
+function setSinglePresence(presence: LanyardPresenceData) {
+  const presenceId = presence.discord_user?.id
+  if (presenceId) {
+    LanyardData.users[presenceId] = presence
+  }
+  if (!LanyardData.userId && presenceId) {
+    LanyardData.userId = presenceId
+  }
+  LanyardData.data = presence
+}
+
+function applyInitState(data: unknown) {
+  if (!data || typeof data !== 'object') {
+    return
+  }
+
+  if (LANYARD_USER_ID && !(LANYARD_USER_ID in (data as Record<string, unknown>))) {
+    setSinglePresence(data as LanyardPresenceData)
+    return
+  }
+
+  const map = data as Record<string, LanyardPayload>
+  LanyardData.users = { ...LanyardData.users, ...map }
+
+  if (LANYARD_USER_ID) {
+    LanyardData.data = map[LANYARD_USER_ID] ?? null
+    LanyardData.userId = LANYARD_USER_ID
+    return
+  }
+
+  const firstUserId = Object.keys(map)[0]
+  if (firstUserId) {
+    LanyardData.userId = firstUserId
+    LanyardData.data = map[firstUserId] ?? null
+  }
+}
+
+function applyPresenceUpdate(data: unknown) {
+  if (!data || typeof data !== 'object') {
+    return
+  }
+
+  const presence = data as LanyardPresenceData
+  const presenceId = presence.discord_user?.id
+  if (presenceId) {
+    LanyardData.users[presenceId] = presence
+  }
+
+  if (!LanyardData.userId && presenceId) {
+    LanyardData.userId = presenceId
+  }
+
+  if (!LANYARD_USER_ID || LANYARD_USER_ID === presenceId) {
+    LanyardData.data = presence
+  }
+}
+
+function subscribeToLanyard() {
+  if (!socket || socket.readyState !== WebSocket.OPEN) {
+    return
+  }
+
+  socket.send(
+    JSON.stringify({
+      op: 2,
+      d: LANYARD_USER_ID
+        ? { subscribe_to_id: LANYARD_USER_ID }
+        : { subscribe_to_all: true }
+    })
+  )
+}
+
+function scheduleReconnect() {
+  if (isUnmounted) {
+    return
+  }
+
+  clearReconnectTimeout()
+  const delay = Math.min(30_000, 1_500 * 2 ** reconnectAttempts)
+  reconnectAttempts += 1
+  LanyardData.status = 'reconnecting'
+  reconnectTimeoutId = window.setTimeout(connectToLanyard, delay)
+}
+
+function cleanupSocket() {
+  clearHeartbeat()
+  clearReconnectTimeout()
+
+  if (socket) {
+    socket.onopen = null
+    socket.onmessage = null
+    socket.onerror = null
+    socket.onclose = null
+    socket.close()
+    socket = null
+  }
+}
+
+function connectToLanyard() {
+  if (isUnmounted) {
+    return
+  }
+
+  clearHeartbeat()
+  clearReconnectTimeout()
+
+  LanyardData.status = reconnectAttempts > 0 ? 'reconnecting' : 'connecting'
+  LanyardData.connected = false
+  LanyardData.error = null
+  LanyardData.userId = LANYARD_USER_ID || null
+  publishUpdate()
+
+  socket = new WebSocket(LANYARD_SOCKET_URL)
+
+  socket.onopen = () => {
+    reconnectAttempts = 0
+    LanyardData.status = 'connected'
+    LanyardData.connected = true
+    publishUpdate('SOCKET_OPEN')
+  }
+
+  socket.onmessage = (event) => {
+    let payload: LanyardGatewayMessage
+    try {
+      payload = JSON.parse(event.data) as LanyardGatewayMessage
+    } catch {
+      return
+    }
+
+    if (payload.op === 1) {
+      const helloData = payload.d as LanyardHelloData | undefined
+      const interval = helloData?.heartbeat_interval
+      if (typeof interval === 'number' && interval > 0) {
+        clearHeartbeat()
+        heartbeatIntervalId = window.setInterval(sendHeartbeat, interval)
+        sendHeartbeat()
+      }
+      subscribeToLanyard()
+      publishUpdate('HELLO')
+      return
+    }
+
+    if (payload.op !== 0 || !payload.t) {
+      return
+    }
+
+    if (payload.t === 'INIT_STATE') {
+      applyInitState(payload.d)
+      publishUpdate(payload.t)
+      return
+    }
+
+    if (payload.t === 'PRESENCE_UPDATE') {
+      applyPresenceUpdate(payload.d)
+      publishUpdate(payload.t)
+    }
+  }
+
+  socket.onerror = () => {
+    LanyardData.status = 'error'
+    LanyardData.error = 'Lanyard socket error'
+    publishUpdate('SOCKET_ERROR')
+  }
+
+  socket.onclose = () => {
+    LanyardData.connected = false
+    LanyardData.status = 'reconnecting'
+    publishUpdate('SOCKET_CLOSED')
+    scheduleReconnect()
+  }
+}
 
 onMounted(() => {
-  window.addEventListener('keydown', onKeyDown)
-  window.addEventListener('click', onClickOutsideDropdown)
+  connectToLanyard()
+  void initNekoAds()
 })
 
-onBeforeUnmount(() => {
-  window.removeEventListener('keydown', onKeyDown)
-  window.removeEventListener('click', onClickOutsideDropdown)
+onUnmounted(() => {
+  isUnmounted = true
+  clearAdsRotation()
+  cleanupSocket()
 })
 </script>
-
-<style>
-.fade-slide-enter-active, .fade-slide-leave-active { transition: all 0.2s ease; }
-.fade-slide-enter-from, .fade-slide-leave-to { opacity: 0; transform: translateY(-5px); }
-.fade-slide-enter-to, .fade-slide-leave-from { opacity: 1; transform: translateY(0); }
-</style>
