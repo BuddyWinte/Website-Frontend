@@ -1,20 +1,66 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image" href="./src/assets/wintepfp.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Your internet hub!" />
-    <meta property="og:title" content="Winte's Portal" />
-    <meta property="og:description" content="Your internet hub!" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Winte's Portal" />
-    <meta name="twitter:description" content="Your internet hub!" />
-    <title>Winte's Portal</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Welcome to Winte's Portal!</title>
+  <script language="javascript" type="text/javascript">
+    if (top != self) {
+      top.location = self.location;
+    }
+    var u = "http://images.neopets.com/m/";
+    var ia = new Array();
+    function loadit() {
+      var x;
+      for (x = 1; x <= 13; x++) {
+        if (x == 11) continue;
+
+        ia[x] = new Image();
+        ia[x].src = u + x + "o.gif";
+      }
+    }
+    function sp(i, s) {
+      var img = null;
+      if (document.images && document.images["i" + i]) {
+        img = document.images["i" + i];
+      } else if (document.getElementById) {
+        img = document.getElementById("i" + i);
+      }
+      if (!img) return;
+      if (s == 0) {
+        img.src = u + i + ".gif";
+      } else {
+        img.src = u + i + "o.gif";
+      }
+    }
+    if (window.onload) {
+      var oldOnload = window.onload;
+      window.onload = function () {
+        oldOnload();
+        loadit();
+      };
+    } else {
+      window.onload = loadit;
+    }
+  </script>
+  <style type="text/css">
+    a {
+      color: #000099;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #990000;
+    }
+
+    body,
+    p,
+    td {
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+    }
+  </style>
+</head>
 </html>

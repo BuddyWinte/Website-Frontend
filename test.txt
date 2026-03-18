@@ -1,0 +1,312 @@
+<template>
+  <!--
+  <html><head>
+<meta name="Description" content="Neopets.Com - Virtual Pet Community!  Join up for free games, shops, auctions, chat and more!">
+<meta name="Keywords" content="pets, pet, games, game, virtual, chat, fun, prizes, play, virtual pet, kids">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Welcome to Neopets!</title>
+<script language="JavaScript">
+<!--
+if(top!=self){top.location=self.location;}
+var u="http://images.neopets.com/m/";
+var ia=new Array();
+function loadit() {
+for(var x=1;x<=13;x++){
+if(x==11)continue;
+ia[x]="i"+x;
+ia[x]=new Image();
+ia[x].src=u+x+"o.gif";
+}}
+function sp(i,s){
+var img=eval("document.i"+i);
+img.src=(s==0)?u+i+".gif":u+i+"o.gif";
+}
+//-->
+</script>
+<style type="text/css">
+A{COLOR:#000099;FONT-FAMILY:verdana,arial,helvetica;FONT-SIZE:10pt;TEXT-DECORATION:none}
+TD,P,body{FONT-FAMILY:verdana,arial,helvetica;FONT-SIZE:10pt;}
+A:hover{COLOR:#990000;}
+</style><script src="http://images.neopets.com/AppMeasurement.min.js" async=""></script><script src="http://images.neopets.com/AppMeasurement_Module_ActivityMap.min.js" async=""></script></head>
+<body onload="loadit()" topmargin="0" marginwidth="0" marginheight="0" leftmargin="0" bgcolor="#ffffff">
+
+
+
+
+<script type="text/javascript">
+function SetCookie(cookieName,cookieValue,nDays) {
+  var today = new Date();
+  var expire = new Date();
+  if (nDays==null || nDays==0) nDays=1;
+  expire.setTime(today.getTime() + 86400000*nDays);
+  document.cookie = cookieName+"="+escape(cookieValue)
+    + ";expires="+expire.toGMTString() + ";path=/";
+}
+function SetAnchorDate(date) {
+  SetCookie("request.anchordate",date,365);
+}
+function SetAnchorWindow(maxSeconds) {
+  SetCookie("request.anchorwindow",maxSeconds,365);
+}
+</script>
+
+<table width="700" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td colspan="2" width="700" valign="bottom" height="35"><a href="http://www.neopets.com/index.phtml"><img src="http://images.neopets.com/tb.gif" width="700" height="35" border="0"></a></td></tr>
+<tr><td width="140" valign="top"><table width="130" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffcc00"><tbody><tr><td width="130">
+<a href="http://www.neopets.com/petcentral.phtml" onmouseout="sp(1,0)" onmouseover="sp(1,1)"><img name="i1" src="http://images.neopets.com/1.gif" alt="Fun things to do with your Neopet" width="130" height="65" border="0"></a><br>
+<a href="http://www.neopets.com/addpet.phtml" onmouseout="sp(2,0)" onmouseover="sp(2,1)"><img name="i2" src="http://images.neopets.com/2.gif" alt="Create a Pet!" width="130" height="45" border="0"></a><br>
+<a href="http://www.neopets.com/neomessages.phtml" onmouseout="sp(3,0)" onmouseover="sp(3,1)"><img name="i3" src="http://images.neopets.com/3.gif" alt="Check your Neomail!" width="130" height="27" border="0"></a><br>
+<a href="http://www.neopets.com/world.phtml" onmouseout="sp(4,0)" onmouseover="sp(4,1)"><img name="i4" src="http://images.neopets.com/4.gif" alt="Learn about Neopia" width="130" height="35" border="0"></a><br>
+<a href="http://www.neopets.com/explore.phtml" onmouseout="sp(5,0)" onmouseover="sp(5,1)"><img name="i5" src="http://images.neopets.com/5.gif" alt="Explore Neopia!" width="130" height="35" border="0"></a><br>
+<a href="http://www.neopets.com/neochat.phtml" onmouseout="sp(6,0)" onmouseover="sp(6,1)"><img name="i6" src="http://images.neopets.com/6.gif" alt="Message Boards" width="130" height="34" border="0"></a><br>
+<a href="http://www.neopets.com/gameroom.phtml" onmouseout="sp(7,0)" onmouseover="sp(7,1)"><img name="i7" src="http://images.neopets.com/7.gif" alt="Neopets Games" width="130" height="34" border="0"></a><br>
+<a href="http://www.neopets.com/objects.phtml" onmouseout="sp(8,0)" onmouseover="sp(8,1)"><img name="i8" src="http://images.neopets.com/8.gif" alt="Shopping, auctions and more!" width="130" height="27" border="0"></a><br>
+<a href="http://www.neopets.com/nf.phtml" onmouseout="sp(9,0)" onmouseover="sp(9,1)"><img name="i9" src="http://images.neopets.com/9.gif" alt="News (updated daily)" width="130" height="37" border="0"></a><br>
+<a href="http://www.neopets.com/help.phtml" onmouseout="sp(10,0)" onmouseover="sp(10,1)"><img name="i10" src="http://images.neopets.com/10.gif" alt="Help!" width="130" height="41" border="0"></a><br>
+<a href="http://www.neopets.com/loginpage.phtml" onmouseout="sp(12,0)" onmouseover="sp(12,1)"><img name="i12" src="http://images.neopets.com/12.gif" alt="Login" width="130" height="26" border="0"></a><br>
+<a href="http://www.neopets.com/logout.phtml" onmouseout="sp(13,0)" onmouseover="sp(13,1)"><img name="i13" src="http://images.neopets.com/13.gif" alt="Logout" width="130" height="27" border="0"></a></td></tr></tbody></table>
+<table width="130" cellspacing="0" cellpadding="0" border="0" bgcolor="#ffcc00"><tbody><tr><td width="128" align="center"><br>
+
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0" 
+                id="defenders" width="120" height="60">
+                <param name="movie" value="http://images.neopets.com/buttons/defenders.swf?cache=0">
+                <param name="quality" value="high"><param name="bgcolor" value="#000000">
+                <embed src="http://images.neopets.com/potatocounter" quality="high" bgcolor="#000000" type="application/x-shockwave-flash" width="120" height="60">
+                </object>
+<br><br><form action="http://www.neopets.com/search.phtml" method="post"><input type="text" name="s" size="7" maxlength="40"><input type="submit" value="Go!"><br><font size="1">search neopets</font><br></form><a href="http://www.neopets.com/linktous.phtml"><font size="1">link to us</font></a></td><td width="2" bgcolor="black"></td></tr>
+<tr><td colspan="2"><img src="http://images.neopets.com/mnb.gif" width="130" height="19"></td></tr></tbody></table>
+</td><td width="560" valign="top"><!--x-->
+<table width="560" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td width="400" valign="top">
+
+<script language="JavaScript">
+<!--
+var bt="http://images.neopets.com/images/";
+t=new Image();
+t.src=bt+"titleroll_r.gif";
+function t_swap(s) {
+document.t1.src=(s==1)?t.src:bt+"titlestill_r.gif";
+}
+//-->
+</script>
+<center>
+<a href="#" onmouseout="t_swap(0)" onmouseover="t_swap(1)">
+<img name="t1" src="http://images.neopets.com/titlestill_r.gif" alt="Welcome to NeoPets" width="377" height="128" border="0"></a>
+</center>
+
+
+<b>NeoPets<sup>..</sup></b> is the greatest Virtual Pet Site on the Internet.
+With your help, we have built a community of over 30 million virtual pet owners across the world!
+Neopets has many things to offer including over 90 games, trading, auctions, greetings, messaging,
+and much much more.  Best of all, it's completely <b>FREE!</b>
+<br>
+<hr width="200" size="1" noshade="noshade"><br>
+<table width="400" cellspacing="0" cellpadding="6" border="0"><tbody><tr>
+<td width="200" valign="top" bgcolor="#ffffee">
+<p>
+<img src="http://images.neopets.com/newsflash.gif" width="188" height="50"><br>
+
+</p><center><b>Feuding Faeries...</b>
+<p>
+<a href="http://www.neopets.com/newnt/index.phtml" target="newpage">
+<img src="http://images.neopets.com/52_illusen_jhudora.gif" width="150" height="150" border="0"></a>
+</p></center>
+<br>
+<font size="1"><b>And Much, Much More!</b></font><br>
+<font size="1">
+Yup thats right, the new issue of the Neopian Times is now out.  If you haven't done so already,
+ read Neopia's one and only weekly newspaper <a href="http://www.neopets.com/newnt/index.phtml" target="newpage"><b><font size="1">now</font></b></a>!
+</font>
+
+<p>
+<font size="1"><b>FEED FLORG!!!</b></font><br>
+<font size="1">
+Florg HUNGRY!!!!  Keep petpets on plate so Florg can eat them!!!  Click
+<a href="http://www.neopets.com/games/feedflorg.phtml"><font size="1"><b>here</b></font></a> to play!
+
+</font></p><p><font size="1">
+<font size="1"><b>Our heroes arrive...</b><br>
+<font size="1">
+Yes, part 4 is up - you can see it by clicking <a href="http://www.neopets.com/medieval/plot.phtml?current_day=4"><b><font size="1">here</font></b></a>.
+The land of Meridell is also open!!! YEAH!!!
+
+</font></font></font></p></td>
+
+<td width="200" valign="top" align="left">
+<p align="center"><a href="http://www.neopets.com/signup_age.phtml"><img src="http://images.neopets.com/signup_button.gif" alt="Click here to sign up with NeoPets" width="190" height="70" border="0"></a>
+</p><p><font size="1">
+Sign up with Neopets today!  It's simple, fast and FREE!
+</font></p>
+
+<hr size="1" noshade="noshade">
+<center><a href="http://www.neopets.com/gameroom.phtml"><img src="http://images.neopets.com/great1.gif" width="69" height="59" border="0"></a></center>
+<table width="190" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+<td width="40">
+<a href="http://www.neopets.com/games/usukifrenzy.phtml"><img src="http://images.neopets.com/sm_usuki.gif" width="40" height="40" border="0"></a></td>
+<td width="150"><a href="http://www.neopets.com/games/usukifrenzy.phtml"><font size="1"><b>Usuki Frenzy</b></font></a><font size="1"> - Hurry! hurry!</font></td>
+</tr>
+<tr>
+<td width="40">
+<a href="http://www.neopets.com/games/meercachase.phtml"><img src="http://images.neopets.com/sm_meerca.gif" width="40" height="40" border="0"></a>
+</td>
+<td width="150"><a href="http://www.neopets.com/games/meercachase.phtml"><font size="1"><b>Meerca Chase</b></font></a><font size="1"> - Avoid the Red Neggs!</font></td>
+</tr>
+<tr>
+<td width="40">
+<a href="http://www.neopets.com/games/pterattack.phtml"><img src="http://images.neopets.com/sm_pterattack.gif" width="40" height="40" border="0"></a>
+</td>
+<td width="150"><a href="http://www.neopets.com/games/pterattack.phtml"><font size="1"><b>Pterattack</b></font></a><font size="1"> - Shoot evil Pterodactyls!</font></td>
+</tr>
+</tbody></table>
+
+<hr size="1" noshade="noshade">
+<a href="http://www.neopets.com/screensavers.phtml">
+<img src="http://images.neopets.com/ss_left.gif" width="67" height="70" border="0" align="left">
+</a>
+<font size="1">Download some great</font>
+<a href="http://www.neopets.com/screensavers.phtml"><font size="1"><b>NeoPets Screen Savers</b></font></a>!<br>
+<font size="1">and <a href="http://www.neopets.com/backgrounds.phtml"><font size="1"><b>Cool Backgrounds</b></font></a>!</font>
+
+<hr size="1" noshade="noshade">
+<center>
+<font size="1">
+<a href="http://www.neopets.com/stockmarket.phtml">
+<img src="http://images.neopets.com/neodaq.gif" width="60" height="40" border="0"></a><br>
+
+Neodaq Index : <b>829</b> <b>(0)</b></font></center><font size="1">
+
+<hr size="1" noshade="noshade">
+<center>
+<a href="http://www.neopets.com/neocam.phtml">
+<img src="http://images.neopets.com/butt_neocam.gif" border="0"></a><br>
+<font size="1">Check out what we really look like with the <a href="http://www.neopets.com/neocam.phtml"><b><font size="1">NeoCam</font></b></a></font>
+</center>
+<br>
+</font></td></tr>
+</tbody></table>
+</td><td width="160" valign="top">
+
+<table width="160" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr><td colspan="4" valign="top" bgcolor="#dddd77"><img src="http://images.neopets.com/news_header.gif" alt="Latest News!" width="160" height="49"></td></tr>
+<tr>
+<td width="2" bgcolor="#000000">
+<img src="http://images.neopets.com/blank.gif" width="2" height="5">
+</td>
+<td width="6" bgcolor="#dddd77">
+<img src="http://images.neopets.com/blank.gif" width="6" height="5">
+</td>
+<td width="150" bgcolor="#dddd77">
+<br><img src="http://images.neopets.com/blank.gif" width="2" height="5" border="0"><br>
+<font size="1"><b>8th day of Running, Y7<br></b></font><font size="1"><b>10:11:48 am NST</b><br>
+
+<p>
+<font size="1"><b>Neopets T-Shirts</b></font><br>
+<font size="1">
+Yes, they are here - check our
+<a href="http://www.neopets.com/sponsors/sponsors_99dogs.phtml" target="newpage"><b><font size="1">Online Store</font></b></a> for
+fabulous new Neopets Merchandise!
+
+</font></p><p><font size="1">
+<font size="1"><b>Limited Too &amp; Claire's!</b></font><br>
+<font size="1">
+Yes, Neopets merchandise is now available in  <b><font size="1">Limited Too</font></b> and <b>Claire's</b> stores across the country!
+Click <a href="http://www.neopets.com/shopping/index.phtml"><b><font size="1">here</font></b></a> now!
+
+
+</font></font></p><p><font size="1"><font size="1">
+<font size="1">
+<b>Earn Prizes!</b><br>
+<font size="1">
+... like DVDs or a PS2 with this new offer from Sony, click
+<a href="http://clickserve.cc-dt.com/link/click?lid=41000000000297772" target="newpage"><font size="1"><b>here</b></font></a> now!!!
+</font></font></font></font></p><p><font size="1"><font size="1">
+
+
+
+
+
+</font></font></p><p><font size="1"><font size="1">
+<font size="1">
+<b>800 NP a Day?</b><br>
+<font size="1">
+Yes, with our coolest new offer you can earn enough to keep your Neopets full of great food forever!
+Click <a href="http://www.neopets.com/sponsors/dealtime.phtml"><b><font size="1">here</font></b></a> for details.
+
+
+</font></font></font></font></p><p><font size="1"><font size="1">
+<font size="1">
+<b>Instant 600 Neopoints!</b><br>
+<font size="1">Just take
+<a href="http://neo6.neopets.com/neojump.phtml?neouser="><b><font size="1">this</font></b></a>
+quick and simple survey and earn <b>300</b> Neopoints when you are done!
+
+Also click
+<a href="http://neo6.neopets.com/neojump.phtml?neouser=&amp;redirecttype_id=9"><font size="1"><b>here</b></font></a>
+to earn another <b>300</b> by answering fun movie and product surveys.
+
+
+</font></font></font></font></p><hr width="140" size="1" noshade="noshade" align="left"><font size="1"><font size="1">
+<a href="javascript:;" onclick="window.open('neopets_demo.phtml','newwin','width=500,height=300'); return false;">
+<img src="http://images.neopets.com/tnc_link.gif" width="135" height="50" border="0"></a>
+<br> View our <b>Flash Demo</b>!!!  (Its about <b>500k</b> so it may take a while to download!)
+
+<hr width="140" size="1" noshade="noshade" align="left">
+
+<table width="135" border="0"><tbody><tr>
+<td align="center">
+<a href="http://www.neopets.com/weather.phtml">
+<img src="http://images.neopets.com/butt_weath.gif" width="67" height="50" border="0"></a></td>
+<td align="center">
+<a href="http://www.neopets.com/neopoints.phtml">
+<img src="http://images.neopets.com/butt_rew.gif" width="68" height="50" border="0"></a>
+</td></tr>
+
+<tr><td align="center">
+<a href="http://www.neopets.com/newnt/index.phtml" target="newpage">
+<img src="http://images.neopets.com/butt_nt.gif" width="67" height="50" border="0"></a></td>
+<td align="center">
+<a href="http://www.neopets.com/neopedia.phtml">
+<img src="http://images.neopets.com/butt_neopedia.gif" width="68" height="50" border="0"></a></td>
+</tr></tbody></table>
+
+</font></font></font></td>
+<td width="2" bgcolor="#000000">
+<img src="http://images.neopets.com/blank.gif" width="2" height="5">
+</td></tr>
+
+<tr>
+<td colspan="4" valign="top" bgcolor="#dddd77"><img src="http://images.neopets.com/news_poll.gif" alt="Neo Poll" width="160" height="71"></td></tr>
+<tr><td colspan="3">
+<form action="add_poll.phtml" method="post"><input type="hidden" name="poll_id" value="52"><img src="http://images.neopets.com/blank.gif" width="5" height="5"><br><font size="1">How many petpets do you have?</font><br><input type="radio" name="poll" value="tally2"><font size="1">Too expensive</font><br><input type="radio" name="poll" value="tally4"><font size="1">2</font><br><input type="radio" name="poll" value="tally1"><font size="1">Whats a petpet?</font><br><input type="radio" name="poll" value="tally3"><font size="1">1</font><br><input type="radio" name="poll" value="tally5"><font size="1">3+</font><br><br><div align="center"><input type="submit" name="subby" value="Vote">&nbsp;<input name="subby" type="submit" value="Results"></div></form></td>
+<td width="2" bgcolor="#000000">
+<img src="http://images.neopets.com/blank.gif" width="2" height="5"></td></tr></tbody></table>
+</td></tr></tbody></table>
+<!--footer-->
+</td></tr></tbody></table><br clear="all">
+<table width="700" border="0">
+<tbody><tr><td width="140">&nbsp;</td>
+<td align="center"><br clear="all">
+<font size="1" color="#666666">NEOPETS, characters, logos, names and all related indicia<br>
+ are trademarks of <a href="http://www.neopets.com/aboutus.phtml"><font size="1">Neopets, Inc.,</font></a><font size="1"><font size="1" color="#666666"> .. 1999-2002.
+All rights reserved.</font><br>
+<a href="http://www.neopets.com/privacy.phtml"><font size="1">Privacy Policy</font></a><font size="1"> |
+<a href="http://www.neopets.com/safetytips.phtml"><font size="1">Safety Tips</font></a><font size="1"> |
+<a href="http://www.neopets.com/contact.phtml"><font size="1">Contact Us</font></a><font size="1"> |
+<a href="http://www.neopets.com/aboutus.phtml"><font size="1">About Us</font></a><font size="1"> |
+<a href="http://www.neopets.com/presskit_form.phtml"><font size="1">Press Kit</font></a><font size="1">
+<script language="JavaScript">
+<!--
+var version=parseInt(navigator.appVersion)
+var isIE=navigator.appVersion.indexOf("MSIE")>0
+var isIE4=isIE&&version>=4
+if (isIE4) { document.write(' | <a href="javascript:window.external.AddFavorite(document.location,document.title)"><font size=1>Bookmark Us</a>');}
+// -->
+</script><br><font size="1">Use of this site signifies your acceptance of the <a href="http://www.neopets.com/terms.phtml"><font size="1">Terms and
+Conditions</font></a><font size="1">
+</font></font></font></font></font></font></font></font></font></td></tr></tbody></table><br clear="all"><br>
+<!--
+www107.neopets.com
+//-->
+  -->
+</template>
